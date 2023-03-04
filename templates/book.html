@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>books</title>
+</head>
+<body>
+    {% for book in books %}
+     <img src="{{ book.photo.url }}" alt="IMG" style="max-height:300px">
+     <p>TAGS:-</p>
+     {% if book.fiction %}
+    <p>Fiction</p></br>
+     {% endif %}
+     {% if book.non_fiction %}
+    <p>Non Fiction</p></br>
+     {% endif %}
+     {% if book.fantasy %}
+    <p>Fantasy</p></br>
+     {% endif %}
+     {% if book.thriller %}
+    <p>Thriller</p></br>
+     {% endif %}
+     {% if book.science_fiction %}
+    <p>Science Fiction</p></br>
+     {% endif %}
+     {% if book.horror %}
+     <p>Horror</p></br>
+      {% endif %}
+     <!-- <img src="../media/{{ book.photo }}/" alt="IMG" style="max-height:300px"> -->
+     <p>{{book.name}}</p>
+     <p>{{book.author}}</p>
+     <p>{{book.about}}</p>
+    {% endfor %}
+</body>
+</html>

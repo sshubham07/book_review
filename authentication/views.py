@@ -46,9 +46,11 @@ def signup(request):
         my_user.last_name=last_name
         my_user.save()
         p_obj=Profile.objects.create(user=my_user,email_token=str(uuid.uuid4()))
+        p_obj.save()
         send_mail_token(email,p_obj.email_token)
         messages.success(request, "Please verify your Email")
-    return render(request, "home.html",{'f_name':username})
+        return render(request, "home.html",{'f_name':username}) 
+    return render(request, "authentication/signup.html")
 
 def signin(request):
     if request.method=='POST':

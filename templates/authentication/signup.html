@@ -15,7 +15,7 @@
     </div>
     {% endfor %}
     <h3>SignUp</h3>
-    <form action="/signup" method="post">
+    <form action="/signup/" method="post">
         {% csrf_token %}
         <label for="">UserName</label>
         <input type="text" id="username" name="username" placeholder="Create Your UserName" required>

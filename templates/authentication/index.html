@@ -19,7 +19,7 @@
     <h3>Hello {{f_name}}</h3>
     <button type="submit"><a href="/signout">SignOut</a></button>
     {% else %}
-    <button type="submit"><a href="/signup">SignUp</a></button>
+    <button type="submit"><a href="{% url 'signup' %}">SignUp</a></button>
     <button type="submit"><a href="/signin">SignIn</a></button>
     {% endif %}
 </body>

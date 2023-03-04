@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+        <strong>MESSAGE: </strong>{{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        </button>
+    </div>
+    {% endfor %}
+    <img src="{{ book.photo.url }}" alt="IMG" style="max-height:300px">
+    <!-- <img src="../media/{{ book.photo }}/" alt="IMG" style="max-height:300px"> -->
+    <p>TAGS:-</p>
+    {% if book.fiction %}
+   <p>Fiction</p></br>
+    {% endif %}
+    {% if book.non_fiction %}
+   <p>Non Fiction</p></br>
+    {% endif %}
+    {% if book.fantasy %}
+   <p>Fantasy</p></br>
+    {% endif %}
+    {% if book.thriller %}
+   <p>Thriller</p></br>
+    {% endif %}
+    {% if book.science_fiction %}
+   <p>Science Fiction</p></br>
+    {% endif %}
+    {% if book.horror %}
+    <p>Horror</p></br>
+     {% endif %}
+    <p>{{book.name}}</p>
+    <p>{{book.author}}</p>
+    <p>{{book.about}}</p> 
+    {% if logged_in and not_commented %}
+    <form action="{% url 'specific_book' slug=book.id %}" method="POST">
+        {% csrf_token %}
+        <input type="text" id="comment" name="comment" placeholder="Write your review" required>
+        <input type="number" id="rating" name="rating" min="1" max="5">
+        <button type="submit">Comment</button>
+    </form>
+    {% endif %}
+    {% for comment in comments %}
+    <p>Author:-{{comment.user}}</p>
+    <p>{{comment.rating}}</p>
+     <p>{{comment.comment}}</p>
+    {% endfor %}
+</body>
+</html>
